@@ -34,7 +34,7 @@ void DriveLikeACar::drive() {
 	if (-0.1 < accelerator && accelerator < 0.1) { accelerator = 0; }
 	accelerator = accelerator*accelerator;
 	printf("Accelerator: %F           Starting Wheel Calculations\n", accelerator);
-	double wheel = mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kLeftX);
+	double wheel = -1.00 * mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kLeftX);
 	if (-0.1 < wheel && wheel < 0.1) { wheel = 0; }
 	printf("Wheel: %F                 Starting Gear Commands\n", wheel);
 
