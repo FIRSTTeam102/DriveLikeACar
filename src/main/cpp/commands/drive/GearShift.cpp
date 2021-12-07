@@ -15,6 +15,8 @@ void GearShift::Initialize() {
 	if (mGear == DriveLikeACar::Gear::Park) {
 		mpDriveLikeACar->stop();
 		mpDriveLikeACar->isBraking = true;
+	} else {
+		mpDriveLikeACar->isBraking = false;
 	}
 	mpDriveLikeACar->mGear = mGear;
 }
