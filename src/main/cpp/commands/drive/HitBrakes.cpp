@@ -29,10 +29,8 @@ void HitBrakes::Execute() {
 
 // Called once the command ends or is interrupted.
 void HitBrakes::End(bool interrupted) {
-	if (!interrupted) {
-		mpDriveLikeACar->setNeutralMode(Coast);
-		mpDriveLikeACar->isBraking = false;
-	}
+	mpDriveLikeACar->setNeutralMode(Coast);
+	mpDriveLikeACar->isBraking = false;
 }
 
 // Returns true when the command should end.
