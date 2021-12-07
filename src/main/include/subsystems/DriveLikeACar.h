@@ -32,6 +32,7 @@ class DriveLikeACar : public frc2::SubsystemBase {
 			Forward = 0,
 			Reverse = 1,
 			Neutral = 2,
+			Park = 3
 		};
 		Gear mGear = Gear::Forward;
 

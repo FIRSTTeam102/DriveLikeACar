@@ -12,6 +12,10 @@ GearShift::GearShift(DriveLikeACar* pDriveLikeACar, DriveLikeACar::Gear gear): m
 
 // Called when the command is initially scheduled.
 void GearShift::Initialize() {
+	if (mGear == DriveLikeACar::Gear::Park) {
+		mpDriveLikeACar->stop();
+		mpDriveLikeACar->isBraking = true;
+	}
 	mpDriveLikeACar->mGear = mGear;
 }
 

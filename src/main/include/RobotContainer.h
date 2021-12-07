@@ -54,4 +54,5 @@ class RobotContainer {
 		HitBrakes mHitBrakes{&mDriveLikeACar};
 		GearShift mForwardGear{&mDriveLikeACar, DriveLikeACar::Gear::Forward};
 		GearShift mReverseGear{&mDriveLikeACar, DriveLikeACar::Gear::Reverse};
+		GearShift mParkGear{&mDriveLikeACar, DriveLikeACar::Gear::Park};
 };

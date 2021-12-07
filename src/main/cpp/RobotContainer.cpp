@@ -19,6 +19,7 @@ void RobotContainer::ConfigureButtonBindings() {
 	mDriverLT.WhenHeld(&mHitBrakes, true);
 	mDriverButtonY.WhenPressed(&mForwardGear, false);
 	mDriverButtonA.WhenPressed(&mReverseGear, false);
+	mDriverButtonB.WhenPressed(&mParkGear, false);
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
