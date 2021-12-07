@@ -6,7 +6,7 @@
 
 RunDriveLikeACar::RunDriveLikeACar(DriveLikeACar* pDriveLikeACar): mpDriveLikeACar(pDriveLikeACar) {
 	// Use addRequirements() here to declare subsystem dependencies.
-	AddRequirements(pDriveLikeACar);
+	AddRequirements(mpDriveLikeACar);
 }
 
 // Called when the command is initially scheduled.
@@ -15,6 +15,7 @@ void RunDriveLikeACar::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void RunDriveLikeACar::Execute() {
 	mpDriveLikeACar->drive();
+	printf("Command running\n");
 }
 
 // Called once the command ends or is interrupted.

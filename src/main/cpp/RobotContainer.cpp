@@ -7,7 +7,7 @@
 RobotContainer::RobotContainer() {
 	// Initialize all of your commands and subsystems here
 
-	// mDriveLikeACar.SetDefaultCommand(std::move(mRunDriveLikeACar));
+	mDriveLikeACar.SetDefaultCommand(std::move(mRunDriveLikeACar));
 	mDriveLikeACar.setDriverController(&mDriverController);
 
 	// Configure the button bindings

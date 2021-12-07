@@ -13,28 +13,41 @@ DriveLikeACar::DriveLikeACar():
 	mDriveBottomRight{DriveConstants::kBottomRightMotor}
 {
 	setNeutralMode(DriveConstants::kDriveLikeACarMode);
+	mDriveTopLeft.SetInverted(true);
+	mDriveBottomLeft.SetInverted(true);
+	mDriveTopRight.SetInverted(true);
+	mDriveBottomRight.SetInverted(true);
 }
 
 // This method will be called once per scheduler run
 void DriveLikeACar::Periodic() {}
 
 void DriveLikeACar::drive() {
-	if (isBraking) return;
-
+	printf("Running Subsystem Method\n");
+	if (isBraking) {
+		printf("Braking\n");
+		stop();
+		return;
+	}
+	printf("Starting accelerator calculations\n");
 	double accelerator = 0.85 * mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kRightTrigger);
 	if (-0.1 < accelerator && accelerator < 0.1) { accelerator = 0; }
 	accelerator = accelerator*accelerator;
-
+	printf("Accelerator: %F           Starting Wheel Calculations\n", accelerator);
 	double wheel = mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kLeftX);
 	if (-0.1 < wheel && wheel < 0.1) { wheel = 0; }
+	printf("Wheel: %F                 Starting Gear Commands\n", wheel);
 
 	switch (mGear) {
-		case Gear::Forward: return;
-		case Gear::Reverse: accelerator = -1.0 * accelerator; return;
-		case Gear::Neutral: accelerator = 0.1; return;
+		case Gear::Forward: break;
+		case Gear::Reverse: accelerator = -1.0 * accelerator; break;
+		case Gear::Neutral: accelerator = 0.1; break;
 	}
 
+	printf("Gear %d\n", mGear);
+
 	mDrive.CurvatureDrive(accelerator, wheel, false);
+	printf("Driving %F    %F\n", accelerator, wheel);
 }
 
 void DriveLikeACar::move(double left, double right) {

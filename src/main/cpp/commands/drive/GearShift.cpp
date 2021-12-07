@@ -19,6 +19,7 @@ void GearShift::Initialize() {
 		mpDriveLikeACar->isBraking = false;
 	}
 	mpDriveLikeACar->mGear = mGear;
+	printf("Switched to gear %d\n", mGear);
 }
 
 // Called repeatedly when this Command is scheduled to run

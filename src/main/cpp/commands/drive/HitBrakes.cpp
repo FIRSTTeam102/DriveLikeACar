@@ -31,6 +31,7 @@ void HitBrakes::Execute() {
 void HitBrakes::End(bool interrupted) {
 	if (!interrupted) {
 		mpDriveLikeACar->setNeutralMode(Coast);
+		mpDriveLikeACar->isBraking = false;
 	}
 }
 
