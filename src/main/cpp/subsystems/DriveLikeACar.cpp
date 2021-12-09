@@ -23,25 +23,20 @@ DriveLikeACar::DriveLikeACar():
 void DriveLikeACar::Periodic() {}
 
 void DriveLikeACar::drive() {
-	printf("Running Subsystem Method\n");
 	if (isBraking) {
-		printf("Braking\n");
 		stop();
 		return;
 	}
-	printf("Starting accelerator calculations\n");
 	double accelerator = 0.85 * mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kRightTrigger);
-	if (-0.1 < accelerator && accelerator < 0.1) { accelerator = 0; }
+	if (-0.1 < accelerator && accelerator < 0.1) accelerator = 0;
 	accelerator = accelerator*accelerator;
-	printf("Accelerator: %F           Starting Wheel Calculations\n", accelerator);
 	double wheel = -1.00 * mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kLeftX);
-	if (-0.1 < wheel && wheel < 0.1) { wheel = 0; }
-	printf("Wheel: %F                 Starting Gear Commands\n", wheel);
+	if (-0.1 < wheel && wheel < 0.1) wheel = 0;
 
 	switch (mGear) {
 		case Gear::Forward: break;
-		case Gear::Reverse: accelerator = -1.0 * accelerator; break;
-		case Gear::Neutral: accelerator = 0.1; break;
+		case Gear::Reverse: accelerator = -1.0 * accelerator; wheel = -1.0 * wheel; break;
+		case Gear::Neutral: accelerator = 0; break;
 	}
 
 	printf("Gear %d\n", mGear);
