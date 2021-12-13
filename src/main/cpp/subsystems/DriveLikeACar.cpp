@@ -49,6 +49,10 @@ void DriveLikeACar::move(double left, double right) {
 	mDrive.TankDrive(left, right, false);
 }
 
+void DriveLikeACar::carMove(double accelerator, double wheel) {
+	mDrive.CurvatureDrive(accelerator, wheel, false);
+}
+
 void DriveLikeACar::stop() {
 	mDrive.TankDrive(0, 0, false);
 }

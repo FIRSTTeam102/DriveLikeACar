@@ -22,6 +22,7 @@ class DriveLikeACar : public frc2::SubsystemBase {
 
 		void drive();
 		void move(double, double);
+		void carMove(double, double);
 		void stop();
 		void setNeutralMode(ctre::phoenix::motorcontrol::NeutralMode);
 
