@@ -10,6 +10,8 @@
 #include <frc2/command/button/JoystickButton.h>
 #include <frc2/command/button/Button.h>
 
+#include "Constants.h"
+
 #include "subsystems/DriveLikeACar.h"
 #include "commands/drive/RunDriveLikeACar.h"
 #include "commands/drive/HitBrakes.h"
@@ -42,7 +44,7 @@ class RobotContainer {
 		frc2::Button mDriverButtonRB{[&] { return mDriverController.GetBumper(frc::GenericHID::JoystickHand::kRightHand); }};
 		frc2::Button mDriverButtonLMenu{[&] { return mDriverController.GetBackButton(); }};
 		frc2::Button mDriverButtonRMenu{[&] { return mDriverController.GetStartButton(); }};
-		frc2::Button mDriverLT{[&] { return (mDriverController.GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand) > 0.5); }};
+		frc2::Button mDriverLT{[&] { return DriveConstants::useSteeringWheel ? (mDriverController.GetRawAxis(2) < 0.95) : (mDriverController.GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand) > 0.5); }};
 		frc2::Button mDriverRT{[&] { return (mDriverController.GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand) > 0.5); }};
 		frc2::Button mDriverUpDPad{[&] { return (mDriverController.GetPOV() == 0); }};
 		frc2::Button mDriverLeftDPad{[&] { return (mDriverController.GetPOV() == 90); }};

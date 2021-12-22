@@ -27,10 +27,10 @@ void DriveLikeACar::drive() {
 		stop();
 		return;
 	}
-	double accelerator = 0.85 * mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kRightTrigger);
+	double accelerator = 0.85 * (DriveConstants::useSteeringWheel ? (1.0 - mpDriverController->GetRawAxis(1)): mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kRightTrigger));
 	if (-0.1 < accelerator && accelerator < 0.1) accelerator = 0;
 	accelerator = accelerator*accelerator;
-	double wheel = -1.00 * mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kLeftX);
+	double wheel = -1.0 * (DriveConstants::useSteeringWheel ? mpDriverController->GetRawAxis(0) : mpDriverController->GetRawAxis((int)frc::XboxController::Axis::kLeftX));
 	if (-0.1 < wheel && wheel < 0.1) wheel = 0;
 
 	switch (mGear) {

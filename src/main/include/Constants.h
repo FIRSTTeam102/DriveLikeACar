@@ -16,6 +16,7 @@
 
 namespace DriveConstants {
     ctre::phoenix::motorcontrol::NeutralMode constexpr kDriveLikeACarMode = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+    bool constexpr useSteeringWheel = true;
 
     // Motor controllers (TalonSRX)
     int constexpr kTopLeftMotor = 1;
