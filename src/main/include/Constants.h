@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <ctre/Phoenix/motorcontrol/NeutralMode.h>
+
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -15,12 +17,13 @@
  */
 
 namespace DriveConstants {
-    ctre::phoenix::motorcontrol::NeutralMode constexpr kDriveLikeACarMode = ctre::phoenix::motorcontrol::NeutralMode::Coast;
-    bool constexpr useSteeringWheel = true;
+	ctre::phoenix::motorcontrol::NeutralMode constexpr kDriveLikeACarMode = ctre::phoenix::motorcontrol::NeutralMode::Coast;
+	bool constexpr useSteeringWheel = true; // @todo detect from device name
+	bool constexpr turnInPlace = true;
 
-    // Motor controllers (TalonSRX)
-    int constexpr kTopLeftMotor = 1;
-    int constexpr kTopRightMotor = 3;
-    int constexpr kBottomLeftMotor = 2;
-    int constexpr kBottomRightMotor = 4;
+	// Motor controllers (TalonSRX)
+	int constexpr kTopLeftMotor = 1;
+	int constexpr kTopRightMotor = 3;
+	int constexpr kBottomLeftMotor = 2;
+	int constexpr kBottomRightMotor = 4;
 }

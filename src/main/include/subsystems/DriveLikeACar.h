@@ -5,7 +5,7 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/SpeedControllerGroup.h>
+#include <frc/motorcontrol/MotorControllerGroup.h>
 #include <ctre/Phoenix.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
@@ -48,8 +48,8 @@ class DriveLikeACar : public frc2::SubsystemBase {
 		WPI_TalonSRX mDriveTopRight;
 		WPI_TalonSRX mDriveBottomRight;
 
-		frc::SpeedControllerGroup mLeft{mDriveTopLeft, mDriveBottomLeft};
-		frc::SpeedControllerGroup mRight{mDriveTopRight, mDriveBottomRight};
+		frc::MotorControllerGroup mLeft{mDriveTopLeft, mDriveBottomLeft};
+		frc::MotorControllerGroup mRight{mDriveTopRight, mDriveBottomRight};
 
 		frc::DifferentialDrive mDrive{mLeft, mRight};
 };
